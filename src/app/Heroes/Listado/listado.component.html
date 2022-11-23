@@ -1,0 +1,34 @@
+<hr>
+<p>listado works!</p>
+
+<!-- La directiva *ngIF funciona como un if en JS. Si la condicion es true se mostrara lo que contenga el
+contenedor que tiene la directiva de lo contrario no lo mostrara. En el ejemplo de abajo el ngIf evalua el string
+heroeBorrado, si no esta vacio devuelve true, de lo contrario devuelve false -->
+<!-- <div>
+    <h3 *ngIf="heroeBorrado">Héroe borrado:     <small>{{heroeBorrado}}</small></h3>
+    <h3 *ngIf="!heroeBorrado">No ha borrado nada</h3>
+</div>
+ -->
+
+ <!-- Para replicar el codigo de arriba de forma mas eficiente podemos usar lo que entendemos como un 
+else if pero en angular -->
+
+<div *ngIf="heroeBorrado; else noBorrado">
+    <h3>Héroe borrado: <small>{{heroeBorrado}}</small></h3>
+</div>
+
+<ng-template #noBorrado>             <!-- ng-template solo se mostrara basado en la referencia local noBorrado -->
+    <h3>No ha borrado nada</h3>
+</ng-template>
+<button (click)="borrarHeroe()">Borrar Primero</button>
+
+
+
+<!-- La directiva *ngFor (for de angular) nos permite recorrer el array heroes[] 
+y crear tantos elementos li como tenga el array con los valores del ismo de la 
+siguiente forma-->
+<ul>
+    <li *ngFor="let heroe of heroes; let i = index">  
+        {{i+1}} - {{heroe}}
+    </li>
+</ul>
